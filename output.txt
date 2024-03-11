@@ -3487,7 +3487,7 @@ Level: ['S01', 'S03', 'S05', 'S10', 'S15', 'S20', 'S23', 'D11', 'D16', 'D24', 'D
 StepArtist: ['NIMGO', 'NIMGO', 'NIMGO', 'NIMGO', 'EXC', 'EXC', 'CONRAD', 'NIMGO', 'EXC', 'EXC', 'IMBA', 'EXC']
 -
 index = 442
-Song: FOUR SEASONS OF LONELINESS ver¥â feat. sariyajin
+Song: FOUR SEASONS OF LONELINESS verï¿½ï¿½ feat. sariyajin
 BPM: 178
 Category: J-MUSIC
 GameType: Arcade
@@ -3519,7 +3519,7 @@ Level: ['S04', 'S09', 'S16', 'S18', 'D05', 'D13', 'D16', 'D19', 'D23', 'DP03']
 StepArtist: ['CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'CONRAD', 'ALPAN']
 -
 index = 446
-Song: FOUR SEASONS OF LONELINESS ver¥â feat. sariyajin
+Song: FOUR SEASONS OF LONELINESS verï¿½ï¿½ feat. sariyajin
 BPM: 178
 Category: J-MUSIC
 GameType: Full Song
@@ -3607,7 +3607,7 @@ Level: ['S03', 'S05', 'S10', 'S15', 'D05', 'D16', 'SP03', 'DP04', 'C02']
 StepArtist: ['EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'IMBA', 'SUNNY']
 -
 index = 457
-Song: Bad ¡Ä End ¡Ä Night
+Song: Bad ï¿½ï¿½ End ï¿½ï¿½ Night
 BPM: 204
 Category: J-MUSIC
 GameType: Arcade
@@ -5397,7 +5397,7 @@ Level: ['S04', 'S08', 'S12', 'S16', 'S20', 'D09', 'D14', 'D18', 'D20']
 StepArtist: ['Valex', 'HARU-KAZE', 'IMSORRY', 'IMSORRY', 'Valex', 'KAHRUNYA', 'KAHRUNYA', 'IMSORRY', 'K//ETERNAL']
 -
 index = 683
-Song: ¥ð¡¤¥ñ¡¤maniac (Full Song)
+Song: ï¿½ð¡¤¥ï¿½maniac (Full Song)
 BPM: 148
 Category: WORLD MUSIC
 GameType: Full Song
@@ -5477,7 +5477,7 @@ Level: ['S02', 'S05', 'S11', 'S15', 'S20', 'S22', 'HDB21', 'D12', 'D21', 'D22']
 StepArtist: ['ANDAMIRO', 'ANDAMIRO', 'ANDAMIRO', 'IMSORRY', 'ANDAMIRO', 'IMSORRY', 'ANDAMIRO', 'ANDAMIRO', 'ANDAMIRO', 'Valex']
 -
 index = 693
-Song: Jonathan¡¯s Dream (Full Song)
+Song: Jonathanï¿½ï¿½s Dream (Full Song)
 BPM: 140
 Category: ORIGINAL
 GameType: Full Song
@@ -5573,7 +5573,7 @@ Level: ['S03', 'S06', 'S11', 'S13', 'S16', 'S18', 'S20', 'D14', 'D17', 'D20', 'D
 StepArtist: ['KAHRUNYA', 'IMSORRY', 'KAHRUNYA', 'IMSORRY', 'KAHRUNYA', 'IMSORRY', 'HARU-KAZE', 'HARU-KAZE', 'KAHRUNYA', 'K//ETERNAL', 'ZELLLOOO', 'HARU-KAZE']
 -
 index = 705
-Song: ¥ð¡¤¥ñ¡¤maniac
+Song: ï¿½ð¡¤¥ï¿½maniac
 BPM: 148
 Category: WORLD MUSIC
 GameType: Arcade
@@ -6433,7 +6433,7 @@ Level: ['S01', 'S03', 'S06', 'S08', 'S14', 'S16', 'D10', 'D15', 'D18', 'DP03']
 StepArtist: ['BME', 'BME', 'BME', 'BME', 'BME', 'BME', 'BME', 'BME', 'BME', 'FELIXOR']
 -
 index = 814
-Song: I¡¯m so sick
+Song: Iï¿½ï¿½m so sick
 BPM: 124
 Category: K-POP
 GameType: Full Song
@@ -6955,7 +6955,7 @@ Level: ['S11', 'S15', 'S17', 'S21', 'S23', 'D17', 'D19', 'D24', 'D25', 'C02']
 StepArtist: ['EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC', 'EXC']
 -
 index = 880
-Song: Re£ºEnd of a Dream
+Song: Reï¿½ï¿½End of a Dream
 BPM: 212
 Category: WORLD MUSIC
 GameType: Arcade
