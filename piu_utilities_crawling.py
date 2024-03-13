@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from piu_series_comparator import *
 #title, bpm, category, gametype, levels_list, level_history_list, step_artist_list, version_list, version_detail_list
+import json
 
 class SongData:
     def __init__(self, title, composers, bpm, category, gametype, length):
@@ -38,18 +39,19 @@ class SongData:
     def chartInfo_to_string(self):
         str = ""
         for i in range(self.length):
-            str += (str(self.chartInfo[i]))
+            addme = f'index: {i+1}, {self.chartInfo[i]}\n'
+            str += addme
         return str
     
     def __str__(self):
         return f'title: {self.title}, composer: {self.composers}, bpm: {self.bpm}, \
-        category: {self.category}, gametype: {self.gametype}, \
-        version: {self.version}, version_detail: {self.version_detail}\nstep info:\n{self.chartInfo_to_string()}\n'
+    category: {self.category}, gametype: {self.gametype}, \
+    version: {self.version}, version_detail: {self.version_detail}\nstep info:\n{self.chartInfo_to_string()}\n'
 
     def __repr__(self):
         return f'title: {self.title}, composer: {self.composers}, bpm: {self.bpm}, \
-        category: {self.category}, gametype: {self.gametype}, \
-        version: {self.version}, version_detail: {self.version_detail}\nstep info:\n{self.chartInfo_to_string()}\n'
+    category: {self.category}, gametype: {self.gametype}, \
+    version: {self.version}, version_detail: {self.version_detail}\nstep info:\n{self.chartInfo_to_string()}\n'
 
     def modify_chartInfo(self, index, chartInfo):
         pass
@@ -57,6 +59,20 @@ class SongData:
     def delete_chartInfo(self, index):
         pass
     
+    def to_dict(self):
+        return {
+            "songTitle_user": self.title,
+            "songArtist_list": self.composers,
+            "songBpm": self.bpm,
+            "songChannel": self.category,
+            "songType": self.gametype,
+            "songSeries": self.version,
+            "piuVersion": self.version_detail,
+            "chartInfo": [chartInfo.__dict__ for chartInfo in self.chartInfo]
+        }
+    def to_json(self):
+        data = self.to_dict()
+        return json.dumps(data, indent=4)
 
 class ChartInfo:
     def __init__(self, level, level_history, step_artist, version, version_detail, tags):
@@ -66,9 +82,22 @@ class ChartInfo:
         self.version = version
         self.version_detail = version_detail
         self.tags = tags
+        #print("take a moment")
+        #print(self)
 
     def __str__(self):
         return f'level: {self.level}, level_history: {self.level_history}, step_artist: {self.step_artist}, version: {self.version}, version_detail: {self.version_detail}, tags: {self.tags}'
+
+    def to_dict(self):
+        return {
+            "level": self.level,
+            "level_history": self.level_history,
+            "step_artist": self.step_artist,
+            "version": self.version,
+            "version_detail": self.version_detail,
+            "tags": self.tags
+        }
+    
 
 #Request Soup 형성
 def extractSoupfromURL(url):
@@ -101,23 +130,6 @@ def get_title(soup):
     print("## " + ans[17:-19] + " ##")
     return ans[17:-19]
 
-def get_step_artist(soup):
-    step_artist = r'"label bg-primary">(.*?)</span>'
-    step_artist_list = re.findall(step_artist, str(soup))
-    print(f'step_artist_list: {step_artist_list}')
-    print(f'len(step_artist_list): {len(step_artist_list)}')
-    return step_artist_list
-
-#need FIX
-def get_levels(soup):
-    levels = r'Levels/(.*?).png"'
-    soup_partial = soup.find('div', class_='list-group-item')
-    levels_list = re.findall(levels, str(soup_partial))
-    ans = level_format_list(levels_list)
-    print(f'levels_list: {ans}')
-    return ans
-
-
 def extract_before_slash(s):
     # Split the string by '/' and take the first element
     return s.split('/')[0]
@@ -138,19 +150,19 @@ def get_bpm(soup):
 
     span_text = soup.find('span', {'class': 'badge bg-info'}).text
     bpm = ''.join(filter(str.isdigit, span_text))
-    print('bpm:', bpm)
+    #print('bpm:', bpm)
     return bpm
 
 def get_category(soup):
     category = soup.find('span', {'class': 'badge bg-success pull-right'}).text
     category = delete_tabs_and_newlines(category)
-    print(f'category: {category}')
+    #print(f'category: {category}')
     return category
 
 def get_gametype(soup):
     gametype = soup.find('span', {'class': 'badge bg-inverse pull-right'}).text
     gametype = delete_tabs_and_newlines(gametype)
-    print(f'gametype: {gametype}')
+    #print(f'gametype: {gametype}')
     return gametype
 
 def get_composer(soup):
@@ -212,26 +224,25 @@ def extract_metadata_legacy(soup):
     gametype = get_gametype(soup)
     return title, step_artist_list, levels_list, bpm, category, gametype
 
-
 def extract_metadata(soup):
-    print("New Gangsta")
+    #print("New Gangsta")
 
     title, composers, bpm, category, gametype = extract_songdata(soup)
 
     data = SongData(title, composers, bpm, category, gametype, 0)
 
-    print("Fine Here")
+    #print("Fine Here")
     levels_list, level_history_list, step_artist_list, version_list, version_detail_list, tags_list = extract_chartdata(soup)
 
     init_version, init_version_detail = find_earliest_version(version_list, version_detail_list) 
     data.set_version(init_version, init_version_detail)
-    print("Fine THere")
+    #print("Fine THere")
     
     length = len(levels_list)
     data.set_length(length)  
     data.set_chartInfo(levels_list, level_history_list, step_artist_list, version_list, version_detail_list, tags_list)
-    print("Fine Everywhere")
-    
+    #print("Fine Everywhere")
+
     return data
 
 def extract_songdata(soup):
@@ -254,3 +265,10 @@ def extract_chartdata(soup):
         version_detail_list.append(version_detail)
         tags_list.append(tags)
     return levels_list, level_history_list, step_artist_list, version_list, version_detail_list, tags_list
+
+
+def extract_data_to_json(list):
+    data = []
+    for item in list:
+        data.append(item.dictify())
+    return json.dumps(data, indent=4)

@@ -69,6 +69,11 @@ def get_series_rank(series):
 def get_version_detail_rank(series):
         if series == "default":
             return -1
+        if series == "Initial":
+            return 6
+        if series == "Encore":
+            return 7
+        
         else:
             parts = series[1:].split('.')
             new_version = '.'.join(parts[:2]) + ''.join(parts[2:])
@@ -84,6 +89,7 @@ def get_rank_float(series, version):
     return series_rank + version_rank 
 
 def find_earliest_version(series_list, version_list):
+    print(f'Finding earliest version from {series_list} and {version_list}')
     selectme = 0
     for i in range(len(version_list)):
         if get_rank_float(series_list[i], version_list[i]) <= get_rank_float(series_list[selectme], version_list[selectme]):
