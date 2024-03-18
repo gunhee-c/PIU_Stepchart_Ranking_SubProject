@@ -1,5 +1,7 @@
 from enum import Enum
 
+##시리즈와 버전에 따른 정렬을 지원하기 위한 간단한 파일입니다.
+
 def get_series_rank(series):
         if series == "The 1st Dance Floor":
             return 1
