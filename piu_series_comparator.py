@@ -25,6 +25,7 @@ def get_series_rank(series):
             return 10
         if series == "The Premiere 2":
             return 11
+        
         if series == "The Prex 2":
             return 12
         if series == "The Premiere 3":
